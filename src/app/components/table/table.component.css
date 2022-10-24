@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+}
+
+/* .ng-container {
+    border: 1px solid #000;
+} */
+.mat-table {
+    /* background-color: #fff; */
+    /* border: 1px solid #000; */
+    /* background-color: aliceblue; */
+    background-color: transparent;
+    box-shadow: none;
+}
+.mat-header-cell, .mat-cell {
+    color: #000;
+}
+.mat-header-row {
+    background-color: transparent;
+ 
+}
+.mat-row {
+    background-color: #fff;
+    margin-bottom: 5px;
+    /* box-shadow: 3px 1px 3px #ccc, -3px 1px 3px #ccc; */
+    box-shadow: 1px 2px 3px #ccc;
+    border-radius: 5px;
+    height: 3rem;
+    color: #000;
+}
+ 
