@@ -28,4 +28,10 @@ table {
     height: 3rem;
     color: #000;
 }
+.mat-field-form {
+    width: 30%;
+}
+.input {
+    width: 30%;
+}
  

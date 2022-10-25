@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, Sort } from '@angular/material/sort';
 
 // import { TRAIL } from 'src/app/mock-data';
 
@@ -132,6 +133,11 @@ export class TableComponent implements OnInit {
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
   dataSource = new MatTableDataSource(TRAIL_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
   constructor() {}
 
   ngOnInit(): void {

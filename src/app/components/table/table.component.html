@@ -1,9 +1,19 @@
 <div class="container">
-
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- <div class="header"> -->
+        <mat-form-field 
+        appearance="outline" 
+        color="primary"
+        
+       >
+       <mat-label>Name</mat-label>
+       <input (keyup)="applyFilter($event)" matInput placeholder="Search here..." required>
+     </mat-form-field>
+     <!-- <button mat-raised-button>Button</button> -->
+   <!-- </div> -->
+    <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" matSort #empTbSort="matSort">
         <!-- dynamic -->
         <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-            <mat-header-cell *matHeaderCellDef>{{ column }}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mart-sort-header="column">{{ column }}</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element[column]}} </mat-cell>
           </ng-container>
         <!-- dynamic -->
