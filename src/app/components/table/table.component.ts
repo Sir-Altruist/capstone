@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
+import { LoginService } from 'src/app/services/login.service';
+import { Table } from 'src/app/Login';
 
 // import { TRAIL } from 'src/app/mock-data';
 
@@ -122,6 +124,20 @@ export const TRAIL_DATA: Trail[] = [
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
+  @Output() onLogin: EventEmitter<Table> = new EventEmitter();
+  //Original
+  map: object;
+  SearchCriteria: Array<object>;
+  Parameter: string;
+  Condition: string;
+  Values: Array<string>;
+  Size: number;
+  Page: number;
+
+  username: string;
+  password: string;
+  grant_type: string;
+
   displayedColumns: string[] = [
     'id',
     'firstName',
@@ -138,9 +154,45 @@ export class TableComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
   }
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getTable() {
+    const tableDetails = {
+      map: {
+        SearchCriteria: [
+          {
+            Parameter: 'EntityPayload.UserId',
+            Condition: 'Equals',
+            Values: ['AuditDemo3'],
+          },
+        ],
+        Size: 2,
+        Page: 0,
+      },
+    };
     // console.log('Datasource: ', this.dataSource);
+    const res = this.loginService
+      .tableAuth({
+        map: {
+          SearchCriteria: [
+            {
+              Parameter: 'EntityPayload.UserId',
+              Condition: 'Equals',
+              Values: ['AuditDemo3'],
+            },
+          ],
+          Size: 2,
+          Page: 0,
+        },
+      })
+      .subscribe((users) => {
+        const token = localStorage.getItem('access_token');
+        console.log('token: ', token);
+        return users;
+      });
+
+    console.log('res: ', res);
   }
 }
