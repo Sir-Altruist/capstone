@@ -3,11 +3,11 @@
         <mat-form-field 
         appearance="outline" 
         color="primary"
-        
        >
        <mat-label>Name</mat-label>
        <input (keyup)="applyFilter($event)" matInput placeholder="Search here..." required>
      </mat-form-field>
+     <button (click)="getTable()">Add Data</button>
      <!-- <button mat-raised-button>Button</button> -->
    <!-- </div> -->
     <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" matSort #empTbSort="matSort">
