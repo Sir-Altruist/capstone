@@ -1,0 +1,18 @@
+<!-- <p>login works!</p> -->
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form class="add-form" (ngSubmit)="onSubmit($event)">
+            <div class="form-control">
+                <input type="text" name="username" [(ngModel)]="username" id="username" placeholder="Enter Username..." />
+            </div>
+            <div class="form-control">
+                <input type="password" name="password" [(ngModel)]="password" id="password" placeholder="Enter Password..." />
+            </div>
+            <mat-card-actions>
+                <input type="submit" value="Login" class="btn btn-block" />
+            </mat-card-actions>
+        </form>
+        <button routerLink="/dashboard" class='btn'>Go to dashboard</button>
+    </mat-card-content>
+</mat-card>
