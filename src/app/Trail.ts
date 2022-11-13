@@ -1,8 +1,10 @@
 export interface Trail {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  gender: string;
-  jobTitle: string;
+  updatedBy: string;
+  updatedOn: string;
+  entityName: string;
+  entityId: string;
+  changedParameter: string;
+  type: string;
+  oldValue: string;
+  newValue: string;
 }
